@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom styles for animations and interactive effects */
+.scroll-fade {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+
+.scroll-fade.visible {
+  opacity: 1;
+}
+
+.bg-interactive {
+  position: relative;
+  overflow: hidden;
+  background-color: #f9fafb;
+}
+
+.bg-interactive::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, #3b82f6 10%, transparent 10.01%);
+  background-size: 50px 50px;
+  pointer-events: none;
+  transition: background-color 0.3s ease;
+}

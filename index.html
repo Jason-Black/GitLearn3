@@ -3,114 +3,196 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Advanced Tailwind App</title>
+  <title>Web Consultant Portfolio</title>
   <link href="./public/styles.css" rel="stylesheet">
   <style>
-    /* Add custom styles for parallax and animations */
-    /* another commit */
-    .parallax {
-      background-image: url('https://placebear.com/1200/600.jpg'); /* Replace with your image */
-      height: 600px;
-      background-attachment: fixed;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
+    /* Custom styles for animations and interactive effects */
+    .scroll-fade {
+      opacity: 0;
+      transition: opacity 1s ease-out;
     }
-    .fade-in {
-      animation: fadeIn 2s ease-in-out;
+
+    .scroll-fade.visible {
+      opacity: 1;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+
+    .bg-interactive {
+      position: relative;
+      overflow: hidden;
+      background-color: #f9fafb;
     }
-    .pulse-button {
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
+
+    .bg-interactive::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, #3b82f6 10%, transparent 10.01%);
+      background-size: 50px 50px;
+      pointer-events: none;
+      transition: background-color 0.3s ease;
     }
   </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
-  <!-- Parallax Section -->
-  <div class="parallax"></div>
 
-  <!-- Main Content -->
-  <div class="container mx-auto px-4 py-8">
-    <header class="mb-8 text-center fade-in">
-      <h1 class="text-5xl font-bold text-blue-600">My Web Application</h1>
-      <p class="text-xl text-gray-700 mt-2">Upload and detect fingerprints in your images</p>
-    </header>
+  <!-- Header Section -->
+  <header class="bg-blue-600 text-white py-6">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl font-bold">Web Consultant Portfolio</h1>
+      <p class="mt-2">Professional web development and consulting services</p>
+    </div>
+  </header>
 
-    <!-- Image Upload Interface -->
-    <section class="bg-white p-6 rounded-lg shadow-md mb-8">
-      <h2 class="text-3xl font-bold text-center text-blue-600 mb-6">Upload Image and Add Fingerprint</h2>
-      <form class="space-y-6">
-        <div class="text-center">
-          <label class="block text-sm font-medium text-gray-700">Upload Image</label>
-          <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-dashed border-gray-300 rounded-md">
-            <div class="space-y-1 text-center">
-              <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
-                <path d="M28 8H20V16H28V8ZM24 12H14L16 8H22L24 12ZM22 22L26 20L28 22H30V26L28 28H26L22 26V22ZM14 22L20 26L16 28H12V24H14V22ZM24 38V28L28 26L26 24L24 26L20 24L18 26L24 28V38H24ZM28 30L30 32L28 34L26 32L28 30ZM18 18L16 20L18 22L20 20L18 18ZM30 16L28 18L30 20L32 18L30 16ZM16 16L14 18L16 20L18 18L16 16ZM26 14L28 12L26 10L24 12L26 14ZM16 6L18 8L16 10L14 8L16 6ZM26 38L24 40L22 38H24V30H26V38Z" fill="currentColor" />
-              </svg>
-              <div class="flex text-sm text-gray-600">
-                <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
-                  <span>Upload a file</span>
-                  <input id="file-upload" name="file-upload" type="file" class="sr-only">
-                </label>
-                <p class="pl-1">or drag and drop</p>
-              </div>
-              <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
-            </div>
-          </div>
+  <!-- Introduction Section -->
+  <section class="py-12 bg-interactive">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-blue-600 mb-6 scroll-fade">About Me</h2>
+      <p class="text-lg text-gray-700 text-center scroll-fade">I am a web consultant with over 10 years of experience in developing and managing web projects. My goal is to help businesses achieve their online presence with modern and efficient web solutions.</p>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="bg-gray-200 py-12">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-blue-600 mb-6 scroll-fade">Services</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-md scroll-fade">
+          <h3 class="text-2xl font-bold mb-2">Web Development</h3>
+          <p class="text-gray-700">Custom web development services tailored to your business needs.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md scroll-fade">
+          <h3 class="text-2xl font-bold mb-2">SEO Optimization</h3>
+          <p class="text-gray-700">Improve your website's visibility and ranking on search engines.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md scroll-fade">
+          <h3 class="text-2xl font-bold mb-2">Consulting</h3>
+          <p class="text-gray-700">Expert advice and strategies for your web projects.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section class="py-12">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-blue-600 mb-6 scroll-fade">Portfolio</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-md scroll-fade">
+          <img src="https://via.placeholder.com/300" alt="Project 1" class="mb-4">
+          <h3 class="text-2xl font-bold mb-2">Project 1</h3>
+          <p class="text-gray-700">Description of the project.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md scroll-fade">
+          <img src="https://via.placeholder.com/300" alt="Project 2" class="mb-4">
+          <h3 class="text-2xl font-bold mb-2">Project 2</h3>
+          <p class="text-gray-700">Description of the project.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md scroll-fade">
+          <img src="https://via.placeholder.com/300" alt="Project 3" class="mb-4">
+          <h3 class="text-2xl font-bold mb-2">Project 3</h3>
+          <p class="text-gray-700">Description of the project.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="bg-gray-200 py-12">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-blue-600 mb-6 scroll-fade">Testimonials</h2>
+      <div class="space-y-8">
+        <div class="bg-white p-6 rounded-lg shadow-md scroll-fade">
+          <p class="text-lg text-gray-700">"The best web consultant we've ever worked with. Highly recommended!"</p>
+          <p class="text-right mt-2">- Client 1</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md scroll-fade">
+          <p class="text-lg text-gray-700">"Outstanding service and support. Our go-to web expert."</p>
+          <p class="text-right mt-2">- Client 2</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md scroll-fade">
+          <p class="text-lg text-gray-700">"Professional and reliable. Delivered our project on time and beyond expectations."</p>
+          <p class="text-right mt-2">- Client 3</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-12">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-blue-600 mb-6 scroll-fade">Contact</h2>
+      <form class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md space-y-6 scroll-fade">
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+          <input type="text" id="name" name="name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+          <input type="email" id="email" name="email" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+        </div>
+        <div>
+          <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+          <textarea id="message" name="message" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" rows="4"></textarea>
         </div>
         <div class="text-center">
           <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 pulse-button">
-            Upload Image and Add Fingerprint
+            Send Message
           </button>
         </div>
       </form>
-    </section>
-
-    <!-- Detect Fingerprint Interface -->
-    <section class="bg-white p-6 rounded-lg shadow-md">
-      <h2 class="text-3xl font-bold text-center text-blue-600 mb-6">Detect Fingerprint in Image</h2>
-      <form class="space-y-6">
-        <div class="text-center">
-          <label class="block text-sm font-medium text-gray-700">Upload Image</label>
-          <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-dashed border-gray-300 rounded-md">
-            <div class="space-y-1 text-center">
-              <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
-                <path d="M28 8H20V16H28V8ZM24 12H14L16 8H22L24 12ZM22 22L26 20L28 22H30V26L28 28H26L22 26V22ZM14 22L20 26L16 28H12V24H14V22ZM24 38V28L28 26L26 24L24 26L20 24L18 26L24 28V38H24ZM28 30L30 32L28 34L26 32L28 30ZM18 18L16 20L18 22L20 20L18 18ZM30 16L28 18L30 20L32 18L30 16ZM16 16L14 18L16 20L18 18L16 16ZM26 14L28 12L26 10L24 12L26 14ZM16 6L18 8L16 10L14 8L16 6ZM26 38L24 40L22 38H24V30H26V38Z" fill="currentColor" />
-              </svg>
-              <div class="flex text-sm text-gray-600">
-                <label for="detect-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
-                  <span>Upload a file</span>
-                  <input id="detect-upload" name="detect-upload" type="file" class="sr-only">
-                </label>
-                <p class="pl-1">or drag and drop</p>
-              </div>
-              <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
-            </div>
-          </div>
-        </div>
-        <div class="text-center">
-          <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 pulse-button">
-            Detect Fingerprint
-          </button>
-        </div>
-      </form>
-    </section>
-  </div>
-
-  <!-- Parallax Section -->
-  <div class="parallax"></div>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer class="bg-gray-800 text-white text-center py-4">
-    <p>&copy; 2024 My Web Application. All rights reserved.</p>
+    <p>&copy; 2024 Web Consultant Portfolio. All rights reserved.</p>
   </footer>
+
+  <!-- Custom JavaScript for scroll and mouse effects -->
+  <script>
+    // Scroll fade-in effect
+    const scrollElements = document.querySelectorAll('.scroll-fade');
+
+    const elementInView = (el, dividend = 1) => {
+      const elementTop = el.getBoundingClientRect().top;
+      return (
+        elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+      );
+    };
+
+    const displayScrollElement = (element) => {
+      element.classList.add('visible');
+    };
+
+    const handleScrollAnimation = () => {
+      scrollElements.forEach((el) => {
+        if (elementInView(el, 1.25)) {
+          displayScrollElement(el);
+        }
+      });
+    };
+
+    window.addEventListener('scroll', () => {
+      handleScrollAnimation();
+    });
+
+    // Mouse interaction effect
+    const bgInteractive = document.querySelector('.bg-interactive');
+
+    bgInteractive.addEventListener('mousemove', (e) => {
+      const { clientX, clientY } = e;
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      const moveX = (clientX / width) * 100;
+      const moveY = (clientY / height) * 100;
+
+      bgInteractive.style.setProperty('--mouse-x', `${moveX}%`);
+      bgInteractive.style.setProperty('--mouse-y', `${moveY}%`);
+      bgInteractive.style.background = `radial-gradient(circle at ${moveX}% ${moveY}%, #3b82f6, #f9fafb)`;
+    });
+  </script>
 </body>
 </html>
