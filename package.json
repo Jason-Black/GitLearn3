@@ -4,7 +4,7 @@
   "description": "This is the README File <h1>Readme as H1</h1>",
   "main": "index.js",
   "scripts": {
-    "build:css": "npx tailwindcss -i /src/styles.css -o /public/styles.css --watch"
+    "build:css": "npx tailwindcss -i ./src/styles.css -o ./public/styles.css --watch"
   },
   "keywords": [],
   "author": "",
