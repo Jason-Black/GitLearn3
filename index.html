@@ -3,94 +3,114 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web Consultant Portfolio</title>
-  <link href="./public/styles.css" rel="stylesheet">
+  <title>Creative Portfolio</title>
+  <link href="public/styles.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
   <style>
-    /* Custom styles for animations and interactive effects */
-    .scroll-fade {
+    /* Custom styles for animations and 3D effects */
+    .animate-fade-in {
       opacity: 0;
-      transition: opacity 1s ease-out;
+      transition: opacity 2s ease-in-out;
     }
 
-    .scroll-fade.visible {
+    .animate-fade-in.visible {
       opacity: 1;
     }
 
-    .bg-interactive {
-      position: relative;
-      overflow: hidden;
-      background-color: #f9fafb;
+    .animate-slide-up {
+      transform: translateY(20px);
+      opacity: 0;
+      transition: transform 1s ease-in-out, opacity 1s ease-in-out;
     }
 
-    .bg-interactive::before {
-      content: '';
+    .animate-slide-up.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .dyson-sphere {
+      width: 100px;
+      height: 100px;
+      background: url('https://via.placeholder.com/100') no-repeat center center / contain;
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+    }
+
+    .background-shapes {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle, #3b82f6 10%, transparent 10.01%);
-      background-size: 50px 50px;
       pointer-events: none;
-      transition: background-color 0.3s ease;
+      z-index: 0;
+    }
+
+    .shape {
+      width: 50px;
+      height: 50px;
+      background: rgba(0, 150, 136, 0.5);
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    @media (min-width: 768px) {
+      .shape {
+        width: 100px;
+        height: 100px;
+      }
     }
   </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="bg-gray-100 text-gray-800 relative overflow-x-hidden">
+
+  <!-- Dyson Sphere Icon -->
+  <div class="dyson-sphere" id="dysonSphere"></div>
+
+  <!-- Background Shapes -->
+  <div class="background-shapes" id="backgroundShapes">
+    <div class="shape" style="top: 10%; left: 20%;"></div>
+    <div class="shape" style="top: 50%; left: 40%;"></div>
+    <div class="shape" style="top: 30%; left: 60%;"></div>
+    <div class="shape" style="top: 70%; left: 80%;"></div>
+  </div>
 
   <!-- Header Section -->
   <header class="bg-blue-600 text-white py-6">
     <div class="container mx-auto px-4">
-      <h1 class="text-4xl font-bold">Web Consultant Portfolio</h1>
-      <p class="mt-2">Professional web development and consulting services</p>
+      <h1 class="text-4xl font-bold animate-fade-in">Creative Portfolio</h1>
+      <p class="mt-2 animate-fade-in">Showcasing my best work with stunning animations</p>
     </div>
   </header>
 
   <!-- Introduction Section -->
-  <section class="py-12 bg-interactive">
+  <section class="py-12">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center text-blue-600 mb-6 scroll-fade">About Me</h2>
-      <p class="text-lg text-gray-700 text-center scroll-fade">I am a web consultant with over 10 years of experience in developing and managing web projects. My goal is to help businesses achieve their online presence with modern and efficient web solutions.</p>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section class="bg-gray-200 py-12">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center text-blue-600 mb-6 scroll-fade">Services</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-white p-6 rounded-lg shadow-md scroll-fade">
-          <h3 class="text-2xl font-bold mb-2">Web Development</h3>
-          <p class="text-gray-700">Custom web development services tailored to your business needs.</p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-md scroll-fade">
-          <h3 class="text-2xl font-bold mb-2">SEO Optimization</h3>
-          <p class="text-gray-700">Improve your website's visibility and ranking on search engines.</p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-md scroll-fade">
-          <h3 class="text-2xl font-bold mb-2">Consulting</h3>
-          <p class="text-gray-700">Expert advice and strategies for your web projects.</p>
-        </div>
-      </div>
+      <h2 class="text-3xl font-bold text-center text-blue-600 mb-6 animate-slide-up">About Me</h2>
+      <p class="text-lg text-gray-700 text-center animate-slide-up">I am a creative web developer with a passion for design and animation. I create visually stunning and interactive web experiences.</p>
     </div>
   </section>
 
   <!-- Portfolio Section -->
-  <section class="py-12">
+  <section class="py-12 bg-gray-200">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center text-blue-600 mb-6 scroll-fade">Portfolio</h2>
+      <h2 class="text-3xl font-bold text-center text-blue-600 mb-6 animate-slide-up">My Work</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-white p-6 rounded-lg shadow-md scroll-fade">
+        <div class="bg-white p-6 rounded-lg shadow-md animate-slide-up">
           <img src="https://via.placeholder.com/300" alt="Project 1" class="mb-4">
           <h3 class="text-2xl font-bold mb-2">Project 1</h3>
           <p class="text-gray-700">Description of the project.</p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-md scroll-fade">
+        <div class="bg-white p-6 rounded-lg shadow-md animate-slide-up">
           <img src="https://via.placeholder.com/300" alt="Project 2" class="mb-4">
           <h3 class="text-2xl font-bold mb-2">Project 2</h3>
           <p class="text-gray-700">Description of the project.</p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-md scroll-fade">
+        <div class="bg-white p-6 rounded-lg shadow-md animate-slide-up">
           <img src="https://via.placeholder.com/300" alt="Project 3" class="mb-4">
           <h3 class="text-2xl font-bold mb-2">Project 3</h3>
           <p class="text-gray-700">Description of the project.</p>
@@ -99,32 +119,11 @@
     </div>
   </section>
 
-  <!-- Testimonials Section -->
-  <section class="bg-gray-200 py-12">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center text-blue-600 mb-6 scroll-fade">Testimonials</h2>
-      <div class="space-y-8">
-        <div class="bg-white p-6 rounded-lg shadow-md scroll-fade">
-          <p class="text-lg text-gray-700">"The best web consultant we've ever worked with. Highly recommended!"</p>
-          <p class="text-right mt-2">- Client 1</p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-md scroll-fade">
-          <p class="text-lg text-gray-700">"Outstanding service and support. Our go-to web expert."</p>
-          <p class="text-right mt-2">- Client 2</p>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-md scroll-fade">
-          <p class="text-lg text-gray-700">"Professional and reliable. Delivered our project on time and beyond expectations."</p>
-          <p class="text-right mt-2">- Client 3</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Contact Section -->
   <section class="py-12">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center text-blue-600 mb-6 scroll-fade">Contact</h2>
-      <form class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md space-y-6 scroll-fade">
+      <h2 class="text-3xl font-bold text-center text-blue-600 mb-6 animate-slide-up">Contact</h2>
+      <form class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md space-y-6 animate-slide-up">
         <div>
           <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
           <input type="text" id="name" name="name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
@@ -138,7 +137,7 @@
           <textarea id="message" name="message" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" rows="4"></textarea>
         </div>
         <div class="text-center">
-          <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 pulse-button">
+          <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
             Send Message
           </button>
         </div>
@@ -148,50 +147,69 @@
 
   <!-- Footer -->
   <footer class="bg-gray-800 text-white text-center py-4">
-    <p>&copy; 2024 Web Consultant Portfolio. All rights reserved.</p>
+    <p>&copy; 2024 Creative Portfolio. All rights reserved.</p>
   </footer>
 
-  <!-- Custom JavaScript for scroll and mouse effects -->
   <script>
-    // Scroll fade-in effect
-    const scrollElements = document.querySelectorAll('.scroll-fade');
+    // GSAP animations
+    gsap.registerPlugin(ScrollTrigger);
 
-    const elementInView = (el, dividend = 1) => {
-      const elementTop = el.getBoundingClientRect().top;
-      return (
-        elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
-      );
-    };
-
-    const displayScrollElement = (element) => {
-      element.classList.add('visible');
-    };
-
-    const handleScrollAnimation = () => {
-      scrollElements.forEach((el) => {
-        if (elementInView(el, 1.25)) {
-          displayScrollElement(el);
+    // Fade-in and Slide-up Animations
+    gsap.utils.toArray('.animate-fade-in').forEach(element => {
+      gsap.fromTo(element, { opacity: 0 }, {
+        opacity: 1,
+        duration: 2,
+        scrollTrigger: {
+          trigger: element,
+          start: 'top 80%',
+          toggleActions: 'play none none none',
         }
       });
-    };
-
-    window.addEventListener('scroll', () => {
-      handleScrollAnimation();
     });
 
-    // Mouse interaction effect
-    const bgInteractive = document.querySelector('.bg-interactive');
+    gsap.utils.toArray('.animate-slide-up').forEach(element => {
+      gsap.fromTo(element, { y: 20, opacity: 0 }, {
+        y: 0,
+        opacity: 1,
+        duration: 1.5,
+        scrollTrigger: {
+          trigger: element,
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+        }
+      });
+    });
 
-    bgInteractive.addEventListener('mousemove', (e) => {
-      const { clientX, clientY } = e;
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      const moveX = (clientX / width) * 100;
-      const moveY = (clientY / height) * 100;
+    // Dyson Sphere Animation
+    gsap.to("#dysonSphere", {
+      y: () => window.innerHeight - 150,
+      scale: 0.5,
+      scrollTrigger: {
+        trigger: "#dysonSphere",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+        pin: true,
+        pinSpacing: false
+      }
+    });
 
-      bgInteractive.style.setProperty('--mouse-x', `${moveX}%`);
-      bgInteractive.style.setProperty('--mouse-y', `${moveY}%`);
-      bgInteractive.style.background = `radial-gradient(circle at ${moveX}% ${moveY}%, #3b82f6, #f9fafb)`;
+    // Background Shapes Animation
+    gsap.utils.toArray('.shape').forEach(shape => {
+      gsap.to(shape, {
+        y: "random(-20, 20)",
+        x: "random(-20, 20)",
+        duration: "random(2, 5)",
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+        scrollTrigger: {
+          trigger: shape,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true
+        }
+      });
     });
   </script>
 </body>
