@@ -5,41 +5,112 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Advanced Tailwind App</title>
   <link href="./public/styles.css" rel="stylesheet">
+  <style>
+    /* Add custom styles for parallax and animations */
+    /* another commit */
+    .parallax {
+      background-image: url('https://placebear.com/1200/600.jpg'); /* Replace with your image */
+      height: 600px;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .fade-in {
+      animation: fadeIn 2s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .pulse-button {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+  </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
+  <!-- Parallax Section -->
+  <div class="parallax"></div>
+
+  <!-- Main Content -->
   <div class="container mx-auto px-4 py-8">
-    <header class="mb-8">
-      <h1 class="text-4xl font-bold text-center text-blue-600">Image Upload Interface</h1>
+    <header class="mb-8 text-center fade-in">
+      <h1 class="text-5xl font-bold text-blue-600">My Web Application</h1>
+      <p class="text-xl text-gray-700 mt-2">Upload and detect fingerprints in your images</p>
     </header>
-    <main>
-      <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
-        <form class="space-y-6">
-          <div class="text-center">
-            <label class="block text-sm font-medium text-gray-700">Upload Image</label>
-            <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-dashed border-gray-300 rounded-md">
-              <div class="space-y-1 text-center">
-                <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
-                  <path d="M28 8H20V16H28V8ZM24 12H14L16 8H22L24 12ZM22 22L26 20L28 22H30V26L28 28H26L22 26V22ZM14 22L20 26L16 28H12V24H14V22ZM24 38V28L28 26L26 24L24 26L20 24L18 26L24 28V38H24ZM28 30L30 32L28 34L26 32L28 30ZM18 18L16 20L18 22L20 20L18 18ZM30 16L28 18L30 20L32 18L30 16ZM16 16L14 18L16 20L18 18L16 16ZM26 14L28 12L26 10L24 12L26 14ZM16 6L18 8L16 10L14 8L16 6ZM26 38L24 40L22 38H24V30H26V38Z" fill="currentColor" />
-                </svg>
-                <div class="flex text-sm text-gray-600">
-                  <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
-                    <span>Upload a file</span>
-                    <input id="file-upload" name="file-upload" type="file" class="sr-only">
-                  </label>
-                  <p class="pl-1">or drag and drop</p>
-                </div>
-                <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+
+    <!-- Image Upload Interface -->
+    <section class="bg-white p-6 rounded-lg shadow-md mb-8">
+      <h2 class="text-3xl font-bold text-center text-blue-600 mb-6">Upload Image and Add Fingerprint</h2>
+      <form class="space-y-6">
+        <div class="text-center">
+          <label class="block text-sm font-medium text-gray-700">Upload Image</label>
+          <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-dashed border-gray-300 rounded-md">
+            <div class="space-y-1 text-center">
+              <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                <path d="M28 8H20V16H28V8ZM24 12H14L16 8H22L24 12ZM22 22L26 20L28 22H30V26L28 28H26L22 26V22ZM14 22L20 26L16 28H12V24H14V22ZM24 38V28L28 26L26 24L24 26L20 24L18 26L24 28V38H24ZM28 30L30 32L28 34L26 32L28 30ZM18 18L16 20L18 22L20 20L18 18ZM30 16L28 18L30 20L32 18L30 16ZM16 16L14 18L16 20L18 18L16 16ZM26 14L28 12L26 10L24 12L26 14ZM16 6L18 8L16 10L14 8L16 6ZM26 38L24 40L22 38H24V30H26V38Z" fill="currentColor" />
+              </svg>
+              <div class="flex text-sm text-gray-600">
+                <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
+                  <span>Upload a file</span>
+                  <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                </label>
+                <p class="pl-1">or drag and drop</p>
               </div>
+              <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
             </div>
           </div>
-          <div class="text-center">
-            <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-              Upload Image
-            </button>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 pulse-button">
+            Upload Image and Add Fingerprint
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Detect Fingerprint Interface -->
+    <section class="bg-white p-6 rounded-lg shadow-md">
+      <h2 class="text-3xl font-bold text-center text-blue-600 mb-6">Detect Fingerprint in Image</h2>
+      <form class="space-y-6">
+        <div class="text-center">
+          <label class="block text-sm font-medium text-gray-700">Upload Image</label>
+          <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-dashed border-gray-300 rounded-md">
+            <div class="space-y-1 text-center">
+              <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                <path d="M28 8H20V16H28V8ZM24 12H14L16 8H22L24 12ZM22 22L26 20L28 22H30V26L28 28H26L22 26V22ZM14 22L20 26L16 28H12V24H14V22ZM24 38V28L28 26L26 24L24 26L20 24L18 26L24 28V38H24ZM28 30L30 32L28 34L26 32L28 30ZM18 18L16 20L18 22L20 20L18 18ZM30 16L28 18L30 20L32 18L30 16ZM16 16L14 18L16 20L18 18L16 16ZM26 14L28 12L26 10L24 12L26 14ZM16 6L18 8L16 10L14 8L16 6ZM26 38L24 40L22 38H24V30H26V38Z" fill="currentColor" />
+              </svg>
+              <div class="flex text-sm text-gray-600">
+                <label for="detect-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
+                  <span>Upload a file</span>
+                  <input id="detect-upload" name="detect-upload" type="file" class="sr-only">
+                </label>
+                <p class="pl-1">or drag and drop</p>
+              </div>
+              <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+            </div>
           </div>
-        </form>
-      </div>
-    </main>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 pulse-button">
+            Detect Fingerprint
+          </button>
+        </div>
+      </form>
+    </section>
   </div>
+
+  <!-- Parallax Section -->
+  <div class="parallax"></div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white text-center py-4">
+    <p>&copy; 2024 My Web Application. All rights reserved.</p>
+  </footer>
 </body>
 </html>
